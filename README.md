@@ -19,7 +19,7 @@ The docs can be found at <https://hexdocs.pm/atproto>.
 
 ## Usage
 
-`ATProtocol` uses `XRPC` for API communication, so we need to build an `XRPC.Client` and then we can call `ATProto` or `ATProto.BSky` functions.
+`ATProtocol` uses [XRPC](https://github.com/moomerman/xrpc) for API communication, so we need to build an `XRPC.Client` and then we can call `ATProto` or `ATProto.BSky` functions.
 
 Unauthenticated example:
 
