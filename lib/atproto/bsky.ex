@@ -14,6 +14,15 @@ defmodule ATProto.BSky do
     ATProto.create_record(client, repo, "app.bsky.feed.post", record)
   end
 
+  def get_author_feed(client, actor, params \\ []) do
+    params = [actor: actor] |> Keyword.merge(params)
+
+    case XRPC.query(client, "app.bsky.feed.getAuthorFeed", params: params) do
+      {:ok, body} -> ATProto.BSky.Feed.new(body)
+      result -> result
+    end
+  end
+
   # app.bsky.actor (https://atproto.com/lexicons/app-bsky-actor)
 
   def get_profile(client, actor) do

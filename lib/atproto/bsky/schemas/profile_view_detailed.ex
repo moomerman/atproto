@@ -35,6 +35,7 @@ defmodule ATProto.BSky.ProfileViewDetailed do
       :indexed_at
     ])
     |> cast_embed(:viewer)
+    |> cast_embed(:labels)
     |> validate_required([:did, :handle])
   end
 
