@@ -1,11 +1,11 @@
-defmodule ATProto.BSky.Feed do
+defmodule ATProto.BSky.Mutes do
   use Ecto.Schema
   import Ecto.Changeset
 
   @primary_key false
   embedded_schema do
     field :cursor, :string
-    embeds_many :feed, ATProto.BSky.FeedViewPost
+    embeds_many :mutes, ATProto.BSky.ProfileView
   end
 
   def changeset(attrs), do: changeset(%__MODULE__{}, attrs)
@@ -13,7 +13,7 @@ defmodule ATProto.BSky.Feed do
   def changeset(schema, attrs) do
     schema
     |> cast(attrs, [:cursor])
-    |> cast_embed(:feed)
+    |> cast_embed(:mutes)
   end
 
   def new(params) do

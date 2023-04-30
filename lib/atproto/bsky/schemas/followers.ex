@@ -1,11 +1,12 @@
-defmodule ATProto.BSky.Feed do
+defmodule ATProto.BSky.Followers do
   use Ecto.Schema
   import Ecto.Changeset
 
   @primary_key false
   embedded_schema do
     field :cursor, :string
-    embeds_many :feed, ATProto.BSky.FeedViewPost
+    embeds_one :subject, ATProto.BSky.ProfileView
+    embeds_many :followers, ATProto.BSky.ProfileView
   end
 
   def changeset(attrs), do: changeset(%__MODULE__{}, attrs)
@@ -13,7 +14,8 @@ defmodule ATProto.BSky.Feed do
   def changeset(schema, attrs) do
     schema
     |> cast(attrs, [:cursor])
-    |> cast_embed(:feed)
+    |> cast_embed(:subject, required: true)
+    |> cast_embed(:followers, required: true)
   end
 
   def new(params) do
