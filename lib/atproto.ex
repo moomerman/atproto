@@ -43,6 +43,23 @@ defmodule ATProto do
   end
 
   @doc """
+  Get information about the repo, including the list of collections.
+  """
+  def describe_repo(client, repo) do
+    params = [repo: repo]
+    XRPC.query(client, "com.atproto.repo.describeRepo", params: params)
+  end
+
+  @doc """
+  Get a record.
+  """
+  def get_record(client, repo, collection, rkey, params \\ []) do
+    params = [repo: repo, collection: collection, rkey: rkey] |> Keyword.merge(params)
+
+    XRPC.query(client, "com.atproto.repo.getRecord", params: params)
+  end
+
+  @doc """
   List a range of records in a collection.
   """
   def list_records(client, repo, collection, params \\ []) do
