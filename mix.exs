@@ -38,7 +38,8 @@ defmodule ATProto.MixProject do
         "README.md": [title: "Overview"],
         LICENSE: [title: "License"]
       ],
-      main: "readme"
+      main: "readme",
+      source_url: @source_url
     ]
   end
 
